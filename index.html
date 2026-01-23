@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 For You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 25px;
+      background: #ff6f91;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff4f7a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="app">
+  <h1>Hey ❤️</h1>
+  <p>I made this little thing just for you.</p>
+  <button onclick="q1()">Start</button>
+</div>
+
+<script>
+  const herName = "Juli";
+  const yourName = "Suprime";
+
+  const app = document.getElementById("app");
+
+  function q1() {
+    app.innerHTML = `
+      <h1>Hey Juli 💕</h1>
+      <p>How are you feeling right now?</p>
+      <button onclick="q2('happy')">😊 Happy</button>
+      <button onclick="q2('miss')">🥺 Missing you</button>
+      <button onclick="q2('tired')">😴 A little tired</button>
+    `;
+  }
+
+  function q2(feel) {
+    let response = "";
+    if (feel === "happy") response = "That already makes me smile.";
+    if (feel === "miss") response = "I miss you too. More than you think.";
+    if (feel === "tired") response = "Then I hope this feels like a soft pause.";
+
+    app.innerHTML = `
+      <p>${response}</p>
+      <p>What do you think this is?</p>
+      <button onclick="final()">A small surprise</button>
+      <button onclick="final()">Something made with love</button>
+    `;
+  }
+
+  function final() {
+    app.innerHTML = `
+      <h1>Juli,</h1>
+      <p>
+        I didn’t make this to impress you.<br><br>
+        I made this because when you’re far away,
+        I still want you to feel close to me.
+        I wanted you to have something you could open,
+        something you could tap through,
+        something that quietly says:
+        <br><br>
+        “I’m thinking about you.”
+        “I choose you.”
+        “You matter to me.”
+        <br><br>
+        Even with distance.<br>
+        Even with busy days.<br>
+        Even when we miss each other.
+        <br><br>
+        You’re still my person.
+        And I’m really grateful I get to call you mine.
+      </p>
+      <p>Happy Valentine’s Day 💌<br>— Juli</p>
+    `;
+  }
+</script>
+
+</body>
+</html>
