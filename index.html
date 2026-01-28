@@ -1,121 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💖 For You</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💖</title>
 
-    .card {
-      background: white;
-      width: 90%;
-      max-width: 400px;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
 
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
+.card {
+  background: white;
+  width: 90%;
+  max-width: 420px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
+  z-index: 2;
+}
 
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
+h1 { margin-bottom: 10px; }
+p { line-height: 1.6; }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 25px;
-      background: #ff6f91;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  background: #ff6f91;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
-    button:hover {
-      background: #ff4f7a;
-    }
-  </style>
+button:hover { background: #ff4f7a; }
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-110vh); }
+}
+</style>
 </head>
+
 <body>
 
 <div class="card" id="app">
   <h1>Hey ❤️</h1>
-  <p>I made this little thing just for you.</p>
+  <p>I made something small… but meaningful.</p>
   <button onclick="q1()">Start</button>
 </div>
 
 <script>
-  const herName = "Juli";
-  const yourName = "Suprime";
+const herName = "HER_NAME";
+const yourName = "YOUR_NAME";
+const app = document.getElementById("app");
 
-  const app = document.getElementById("app");
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.innerText = "💖";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}, 500);
 
-  function q1() {
-    app.innerHTML = `
-      <h1>Hey Juli 💕</h1>
-      <p>How are you feeling right now?</p>
-      <button onclick="q2('happy')">😊 Happy</button>
-      <button onclick="q2('miss')">🥺 Missing you</button>
-      <button onclick="q2('tired')">😴 A little tired</button>
-    `;
-  }
+// Q1
+function q1() {
+  app.innerHTML = `
+    <h1>Hey ${herName} 💕</h1>
+    <p>How are you feeling right now?</p>
+    <button onclick="q2('happy')">😊 Happy</button>
+    <button onclick="q2('miss')">🥺 Missing you</button>
+    <button onclick="q2('tired')">😴 A little tired</button>
+  `;
+}
 
-  function q2(feel) {
-    let response = "";
-    if (feel === "happy") response = "That already makes me smile.";
-    if (feel === "miss") response = "I miss you too. More than you think.";
-    if (feel === "tired") response = "Then I hope this feels like a soft pause.";
+// Q2
+function q2(feel) {
+  let response = "";
+  if (feel === "happy") response = "That already makes me smile a lot.";
+  if (feel === "miss") response = "I miss you too… more than you think.";
+  if (feel === "tired") response = "Then this is your little soft break.";
 
-    app.innerHTML = `
-      <p>${response}</p>
-      <p>What do you think this is?</p>
-      <button onclick="final()">A small surprise</button>
-      <button onclick="final()">Something made with love</button>
-    `;
-  }
+  app.innerHTML = `
+    <p>${response}</p>
+    <p>When you think about us, what comes first?</p>
+    <button onclick="q3()">Comfort</button>
+    <button onclick="q3()">Excitement</button>
+    <button onclick="q3()">Everything</button>
+  `;
+}
 
-  function final() {
-    app.innerHTML = `
-      <h1>Juli,</h1>
-      <p>
-        I didn’t make this to impress you.<br><br>
-        I made this because when you’re far away,
-        I still want you to feel close to me.
-        I wanted you to have something you could open,
-        something you could tap through,
-        something that quietly says:
-        <br><br>
-        “I’m thinking about you.”
-        “I choose you.”
-        “You matter to me.”
-        <br><br>
-        Even with distance.<br>
-        Even with busy days.<br>
-        Even when we miss each other.
-        <br><br>
-        You’re still my person.
-        And I’m really grateful I get to call you mine.
-      </p>
-      <p>Happy Valentine’s Day 💌<br>— Juli</p>
-    `;
-  }
+// Q3
+function q3() {
+  app.innerHTML = `
+    <p>One more thing…</p>
+    <p>Do you believe small efforts still matter?</p>
+    <button onclick="final()">Yes, they do</button>
+    <button onclick="final()">Sometimes</button>
+  `;
+}
+
+// FINAL MESSAGE
+function final() {
+  app.innerHTML = `
+    <h1>${herName},</h1>
+    <p>
+      I didn’t make this to impress you.<br><br>
+      I made this because when you’re far away,
+      I still want you to feel close to me.<br><br>
+
+      I wanted you to have something you could open,
+      something you could tap through,
+      something that quietly says:<br><br>
+
+      “I’m thinking about you.”<br>
+      “I choose you.”<br>
+      “You matter to me.”<br><br>
+
+      Even with distance.<br>
+      Even with busy days.<br>
+      Even when we miss each other.<br><br>
+
+      You’re still my person.
+      The one I want to share things with.
+      The one I think about during random moments.
+      The one I’m grateful for.<br><br>
+
+      And I hope this small thing made you smile.
+    </p>
+
+    <p>Happy Valentine’s Day 💌<br>— ${yourName}</p>
+  `;
+}
 </script>
 
 </body>
