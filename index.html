@@ -50,7 +50,18 @@ button {
 
 <audio id="music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
 
-<div class="container">
+  
+<div id="lockScreen">
+  <h2>🔐 Private Message</h2>
+  <p>Only HERNAME can unlock this ❤️</p>
+  <input type="password" id="password" placeholder="Enter secret word">
+  <button onclick="checkPassword()">Unlock</button>
+  <p id="wrong" style="color:yellow;"></p>
+</div>
+
+
+<div class="container hidden" id="mainContent">
+
 
 <h1>Hyyy Beautiful ❤️</h1>
 
@@ -159,9 +170,62 @@ setInterval(() => {
   setTimeout(() => heart.remove(), 6000);
 }, 400);
 </script>
+  // PASSWORD LOCK
+function checkPassword(){
+  const pass = document.getElementById("password").value.toLowerCase();
+  if(pass === "iloveyou"){   // change password if you want
+    document.getElementById("lockScreen").style.display="none";
+    document.getElementById("mainContent").classList.remove("hidden");
+    startHack();
+  } else {
+    document.getElementById("wrong").innerText="Wrong password baby 🥺 try again";
+  }
+}
+
+// HACKER ANIMATION
+const hackMsg = "Love located... Feelings detected... Connection stable... Forever mode activated ❤️";
+let h = 0;
+function startHack(){
+  document.getElementById("hacker").classList.remove("hidden");
+  const interval = setInterval(()=>{
+    if(h < hackMsg.length){
+      document.getElementById("hackText").innerHTML += hackMsg.charAt(h);
+      h++;
+    } else {
+      clearInterval(interval);
+      setTimeout(()=>{
+        document.getElementById("hacker").style.display="none";
+      },2000);
+    }
+  },40);
+}
+
+// SLIDESHOW
+const images = ["yourphoto1.jpg","yourphoto2.jpg","yourphoto3.jpg"];
+let s=0;
+setInterval(()=>{
+  const slide = document.getElementById("slide");
+  if(slide){
+    s=(s+1)%images.length;
+    slide.src=images[s];
+  }
+},2500);
+
+// NAME HEART RAIN
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "HERNAME ❤️";
+  heart.style.left = Math.random()*100+"vw";
+  heart.style.fontSize = "14px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},700);
+
 
 </body>
 </html>
+
 
 
 
