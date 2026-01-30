@@ -1,60 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>For Someone Very Special ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Juli ❤️</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
+  margin:0;
+  font-family:Segoe UI;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  color:white;
+  text-align:center;
+  overflow:hidden;
 }
 
-.container {
-  padding: 30px;
-}
+.screen { display:none; height:100vh; padding:30px; }
+.active { display:block; }
 
 button {
-  padding: 12px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  background: white;
-  color: #ff4b6e;
-  font-weight: bold;
+  padding:12px 20px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  background:white;
+  color:#ff4b6e;
+  font-weight:bold;
 }
 
-.hidden { display: none; }
-
 .heart {
-  position: fixed;
-  color: rgba(255,255,255,0.7);
-  animation: float 6s linear infinite;
+  position:fixed;
+  animation:float 6s linear infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh); }
-  100% { transform: translateY(-10vh); }
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
 }
-
-.screen { display: none; height: 100vh; padding: 30px; }
-.active { display: block; }
-
 </style>
 </head>
 
 <body>
 
-<audio id="music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
-
-  
+<!-- SCREEN 1 PASSWORD -->
 <div id="screen1" class="screen active">
   <h2>🔐 Private Message</h2>
   <p>Only Juli can unlock this ❤️</p>
@@ -63,209 +51,42 @@ button {
   <p id="wrong"></p>
 </div>
 
-
+<!-- SCREEN 2 HACK -->
 <div id="screen2" class="screen">
   <h2>💻 Accessing Heart...</h2>
   <p id="hackText"></p>
 </div>
 
+<!-- SCREEN 3 LETTER -->
 <div id="screen3" class="screen">
   <h1>Hi Beautiful ❤️</h1>
   <p id="letter"></p>
   <button onclick="goToQuestions()">Continue</button>
 </div>
 
+<!-- SCREEN 4 QUESTION -->
 <div id="screen4" class="screen">
   <h2>Do you know how special you are to me?</h2>
   <button onclick="goToSlideshow()">Yes</button>
   <button onclick="goToSlideshow()">I think so</button>
 </div>
 
+<!-- SCREEN 5 SLIDESHOW -->
 <div id="screen5" class="screen">
   <h2>Our Moments 📸</h2>
   <img id="slide" src="yourphoto1.jpg" width="250">
   <button onclick="goToFinal()">Last Message ❤️</button>
 </div>
 
+<!-- SCREEN 6 FINAL -->
 <div id="screen6" class="screen">
   <h1>Happy Valentine's Day ❤️</h1>
-</div>
-
-
-
-
-<div class="container hidden" id="mainContent">
-
-
-<h1>Hyyy Beautiful ❤️</h1>
-
-<p id="letter"></p>
-
-<button onclick="startMusic()">Play Music 🎵</button>
-<button onclick="nextSection()">Continue</button>
-
-<div id="questions" class="hidden">
-  <h2>Before we go further… answer me 💌</h2>
-  <p>Do you know how special you are to me?</p>
-  <button onclick="showResponse()">Yes</button>
-  <button onclick="showResponse()">I think so</button>
-
-  <p class="hidden" id="response">
-    You are not just special. You are my comfort, my happiness, my peace,
-    my favorite notification, and the best part of my day — even from miles away.
-  </p>
-</div>
-
-<div id="memory" class="hidden">
-  <h2>Tap below for something from my heart 💖</h2>
-  <button onclick="revealMemory()">Unlock Memory</button>
-  <p id="memoryText" class="hidden">
-    I didn’t make this to impress you.  
-    I made this because even though there are miles between us,
-    my heart always feels closest when I think of you.  
-
-    Every line of code here is a small piece of effort,
-    because you deserve someone who tries,
-    someone who cares,
-    someone who chooses you — every single day.  
-
-    No distance can change how deeply I feel about you.
-  </p>
-</div>
-
-<div id="final" class="hidden">
-  <h1>Happy Valentine's Day my Sweet Babyyyy ❤️</h1>
-  <p>
-    If I could, I would be there right now,  
-    holding your hand, 
-    cudddling you while watching tv,  
-    looking into your eyes,  
-    and telling you how lucky I am to have you.
-    and how much you make me feel special.
-    you arent just my love, you're my wife, partner for life,
-    and my future and my everything.
-  
-
-    Until that day comes —  
-    this little world I made is my way of hugging you from afar. 💞
-  </p>
-</div>
-
+  <p>Even miles apart, my heart always chooses you.</p>
 </div>
 
 <script>
-// TYPEWRITER LETTER
-const text = `I know we are far apart right now,
-but not a single day goes by where I don’t think about you.
-You are the reason I smile randomly,
-the reason my days feel lighter,
-and the reason my heart feels full.
-
-So I made something special… just for you. ❤️`;
-
-let i = 0;
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("letter").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 35);
-  }
-}
-typeWriter();
-
-// MUSIC
-function startMusic() {
-  document.getElementById("music").play();
-}
-
-// SECTIONS
-function nextSection() {
-  document.getElementById("questions").classList.remove("hidden");
-}
-
-function showResponse() {
-  document.getElementById("response").classList.remove("hidden");
-  document.getElementById("memory").classList.remove("hidden");
-}
-
-function revealMemory() {
-  document.getElementById("memoryText").classList.remove("hidden");
-  document.getElementById("final").classList.remove("hidden");
-}
-
-// FLOATING HEARTS
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 20 + 10 + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
-}, 400);
-
-function checkPassword(){
-  const passInput = document.getElementById("password");
-
-  if(!passInput){
-    alert("System loading... try again ❤️");
-    return;
-  }
-
-  const pass = passInput.value.trim().toLowerCase();
-
-  if(pass === "iloveyou"){
-    document.getElementById("lockScreen").style.display="none";
-    document.getElementById("mainContent").classList.remove("hidden");
-    startHack();
-  } else {
-    document.getElementById("wrong").innerText="Wrong password baby 🥺 try again";
-  }
-}
-
-
-// HACKER ANIMATION
-const hackMsg = "Love located... Feelings detected... Connection stable... Forever mode activated ❤️";
-let h = 0;
-function startHack(){
-  document.getElementById("hacker").classList.remove("hidden");
-  const interval = setInterval(()=>{
-    if(h < hackMsg.length){
-      document.getElementById("hackText").innerHTML += hackMsg.charAt(h);
-      h++;
-    } else {
-      clearInterval(interval);
-      setTimeout(()=>{
-        document.getElementById("hacker").style.display="none";
-      },2000);
-    }
-  },40);
-}
-
-// SLIDESHOW
-const images = ["yourphoto1.jpg","yourphoto2.jpg","yourphoto3.jpg"];
-let s=0;
-setInterval(()=>{
-  const slide = document.getElementById("slide");
-  if(slide){
-    s=(s+1)%images.length;
-    slide.src=images[s];
-  }
-},2500);
-
-// NAME HEART RAIN
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "love ❤️";
-  heart.style.left = Math.random()*100+"vw";
-  heart.style.fontSize = "14px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-},700);
-
 function showScreen(id){
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
@@ -280,7 +101,7 @@ function checkPassword(){
 }
 
 function startHack(){
-  const msg="Love located... Forever mode activated ❤️";
+  const msg="Love located... Feelings detected... Forever mode activated ❤️";
   let i=0;
   const interval=setInterval(()=>{
     if(i<msg.length){
@@ -293,22 +114,44 @@ function startHack(){
   },40);
 }
 
-function goToQuestions(){ showScreen("screen4"); }
-function goToSlideshow(){ showScreen("screen5"); }
-function goToFinal(){ showScreen("screen6"); }
-  
-</script>
+const text=`Even though there are miles between us,
+you are always the closest person to my heart.
+I made this little world just to see you smile ❤️`;
 
+let t=0;
+function typeWriter(){
+  if(t<text.length){
+    document.getElementById("letter").innerHTML+=text.charAt(t);
+    t++;
+    setTimeout(typeWriter,35);
+  }
+}
+typeWriter();
+
+function goToQuestions(){showScreen("screen4");}
+function goToSlideshow(){showScreen("screen5");}
+function goToFinal(){showScreen("screen6");}
+
+const images=["yourphoto1.jpg","yourphoto2.jpg","yourphoto3.jpg"];
+let s=0;
+setInterval(()=>{
+  const slide=document.getElementById("slide");
+  if(slide){
+    s=(s+1)%images.length;
+    slide.src=images[s];
+  }
+},2500);
+
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=Math.random()*20+10+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},700);
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
