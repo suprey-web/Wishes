@@ -54,6 +54,27 @@ button {
 }
 
 
+ .card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+ 
+
+
 
 </style>
 </head>
@@ -77,30 +98,48 @@ button {
 
 <!-- SCREEN 3 LETTER -->
 <div id="screen3" class="screen">
-  <h1>Hi Beautiful ❤️</h1>
-  <p id="letter"></p>
-  <button onclick="goToQuestions()">Continue</button>
+  <div class="card">
+    <h1>Hyyy Beautiful ❤️</h1>
+    <p id="letter"></p>
+    <button onclick="goToQuestions()">Continue</button>
+  </div>
 </div>
+
 
 <!-- SCREEN 4 QUESTION -->
 <div id="screen4" class="screen">
-  <h2>Do you know how special you are to me?</h2>
-  <button onclick="goToSlideshow()">Yes</button>
-  <button onclick="goToSlideshow()">I think so</button>
+  <div class="card">
+    <h2>Do you know how special you are to me?</h2>
+    <button onclick="goToSlideshow()">Yes</button>
+    <button onclick="goToSlideshow()">I think so</button>
+  </div>
 </div>
+
 
 <!-- SCREEN 5 SLIDESHOW -->
 <div id="screen5" class="screen">
-  <h2>Our Moments 📸</h2>
-  <img id="slide" src="yourphoto1.jpg" width="250">
-  <button onclick="goToFinal()">Last Message ❤️</button>
+  <div class="card">
+    <h2>Our Moments 📸</h2>
+    <img id="slide" src="yourphoto1.jpg" width="250">
+    <br><br>
+    <button onclick="goToFinal()">Last Message ❤️</button>
+  </div>
 </div>
+
 
 <!-- SCREEN 6 FINAL -->
 <div id="screen6" class="screen">
-  <h1>Happy Valentine's Day ❤️</h1>
-  <p>Even miles apart, my heart always chooses you.</p>
+  <div class="card">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p>
+      Even with distance between us, you are my comfort, my happiness,
+      and the most beautiful part of my life.  
+      One day I won’t need code to reach you —  
+      I’ll just hold you. 💞
+    </p>
+  </div>
 </div>
+
 
 <script>
 function showScreen(id){
@@ -181,6 +220,7 @@ setInterval(createHeart,1000);
 
 </body>
 </html>
+
 
 
 
