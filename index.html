@@ -136,6 +136,7 @@ button {
       and the most beautiful part of my life.  
       One day I won’t need code to reach you —  
       I’ll just hold you. 💞
+      <button onclick="goToGame()">Final Surprise 🎁</button>
     </p>
   </div>
 </div>
@@ -216,10 +217,60 @@ function createHeart(){
 setInterval(createHeart,1000);
 
 
+  function goToGame(){ showScreen("screen7"); }
+
+let scale = 1;
+
+function moveNo(){
+  const no = document.getElementById("noBtn");
+  const area = no.parentElement;
+
+  const maxX = area.clientWidth - no.offsetWidth;
+  const maxY = area.clientHeight - no.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+
+  // YES button grows
+  scale += 0.15;
+  document.getElementById("yesBtn").style.transform = `scale(${scale})`;
+}
+
+function sheSaidYes(){
+  showScreen("screen6");
+  document.querySelector("#screen6 .card").innerHTML = `
+    <h1>SHE SAID YESSSS ❤️😭</h1>
+    <p>
+      Best decision of your life btw.  
+      Officially locked as my Valentine.  
+      No returns. No refunds. Forever subscription activated 💍💖
+    </p>
+  `;
+}
+
+
+
 </script>
+  
+<!-- SCREEN 7 VALENTINE GAME -->
+<div id="screen7" class="screen">
+  <div class="card">
+    <h2>One last question… ❤️</h2>
+    <h3>Will you be my Valentine?</h3>
+
+    <div style="position:relative; height:200px; margin-top:30px;">
+      <button id="yesBtn" onclick="sheSaidYes()" style="font-size:18px;">YES 💖</button>
+      <button id="noBtn" onmouseover="moveNo()" style="position:absolute;">No 🙈</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
+
 
 
 
