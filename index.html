@@ -251,6 +251,46 @@ function sheSaidYes(){
   `;
 }
 
+let scale = 1;
+let noCount = 0;
+
+const noTexts = [
+  "Really?",
+  "You serious??",
+  "Come onnnn 😭",
+  "Stop playing",
+  "You must be joking",
+  "Okay now I'm getting sad 🥺",
+  "Why you doing this to me",
+  "Last chance missy 😤"
+];
+
+function noClicked(){
+  const no = document.getElementById("noBtn");
+  const area = no.parentElement;
+
+  // Move button
+  const maxX = area.clientWidth - no.offsetWidth;
+  const maxY = area.clientHeight - no.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+
+  // Change text
+  if(noCount < noTexts.length){
+    no.innerText = noTexts[noCount];
+    noCount++;
+  }
+
+  // YES button grows
+  scale += 0.2;
+  document.getElementById("yesBtn").style.transform = `scale(${scale})`;
+}
+
+
 
 
 </script>
@@ -263,13 +303,14 @@ function sheSaidYes(){
 
     <div style="position:relative; height:200px; margin-top:30px;">
       <button id="yesBtn" onclick="sheSaidYes()" style="font-size:18px;">YES 💖</button>
-      <button id="noBtn" onmouseover="moveNo()" style="position:absolute;">No 🙈</button>
+      <button id="noBtn" onclick="noClicked()" style="position:absolute;">No 🙈</button>
     </div>
   </div>
 </div>
 
 </body>
 </html>
+
 
 
 
