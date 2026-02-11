@@ -258,10 +258,7 @@ Every. Single. Time.
 
 
   <button onclick="startCatch()">Catch My Heart ❤️</button>
-<div id="gameArea" style="position:relative;height:200px;"></div>
-  <div id="gameArea" style="
-  position:relative;
-  height:300px;
+<div id="gameArea" style="position:relative;height:300px;overflow:hidden;border-radius:20px;margin-top:20px;"></div>
   overflow:hidden;
   border-radius:20px;
   margin-top:20px;
@@ -593,12 +590,7 @@ document.addEventListener("click", (e)=>{
   setTimeout(()=>spark.remove(),2000);
 });
 
-  if(pass==="iloveyou"){
-  showScreen("screen2");
-  setTimeout(()=>{
-    alert("The real password was always YOU ❤️");
-  },1200);
-}
+
 
 function missMeter(val){
   const text = document.getElementById("missText");
@@ -643,6 +635,7 @@ function missMeter(val){
 
 </body>
 </html>
+
 
 
 
