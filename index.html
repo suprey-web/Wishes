@@ -109,6 +109,19 @@ button {
 }
 
 
+  #nextBtn{
+  margin-top:15px;
+  padding:12px;
+  width:100%;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background: linear-gradient(45deg,#a18cd1,#fbc2eb);
+}
+
+
+
 
 </style>
 </head>
@@ -204,8 +217,10 @@ Every. Single. Time.
     <h2 id="question">Loading...</h2>
     <div id="answers"></div>
     <p id="feedback"></p>
+    <button id="nextBtn" style="display:none;" onclick="nextQuestion()">Next ➜</button>
   </div>
 </div>
+
 
 
 
@@ -441,6 +456,7 @@ const quiz = [
 ];
 
 let currentQ = 0;
+let answered = false;
 
 function goToQuiz(){
   showScreen("screenQuiz");
@@ -448,11 +464,15 @@ function goToQuiz(){
 }
 
 function loadQuestion(){
+  answered = false;
+  document.getElementById("nextBtn").style.display = "none";
+  document.getElementById("feedback").innerText = "";
+
   const q = quiz[currentQ];
   document.getElementById("question").innerText = q.q;
+
   const answersDiv = document.getElementById("answers");
   answersDiv.innerHTML = "";
-  document.getElementById("feedback").innerText = "";
 
   q.a.forEach(option=>{
     const btn = document.createElement("button");
@@ -463,23 +483,31 @@ function loadQuestion(){
 }
 
 function selectAnswer(button, correct){
+  if(answered) return;
+  answered = true;
+
+  const buttons = document.querySelectorAll("#answers button");
+  buttons.forEach(b => b.disabled = true);
+
   if(correct){
     button.classList.add("correct");
     document.getElementById("feedback").innerText = "Yayyy correct 💖";
     confetti({particleCount:120, spread:70, origin:{y:0.6}});
   } else {
     button.classList.add("wrong");
-    document.getElementById("feedback").innerText = "Aww wrong 😢 try next";
+    document.getElementById("feedback").innerText = "Aww wrong 😢";
   }
 
-  setTimeout(()=>{
-    currentQ++;
-    if(currentQ < quiz.length){
-      loadQuestion();
-    } else {
-      showScreen("screen7"); // go to Valentine game
-    }
-  }, 1200);
+  document.getElementById("nextBtn").style.display = "block";
+}
+
+function nextQuestion(){
+  currentQ++;
+  if(currentQ < quiz.length){
+    loadQuestion();
+  } else {
+    showScreen("screen7"); // Valentine game screen
+  }
 }
 
 
@@ -501,6 +529,7 @@ function selectAnswer(button, correct){
 
 </body>
 </html>
+
 
 
 
