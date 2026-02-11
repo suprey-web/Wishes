@@ -102,6 +102,14 @@ button {
     <h1>Hyyy Beautiful ❤️</h1>
     <p id="letter"></p>
     <button onclick="goToQuestions()">Continue</button>
+    <button onclick="showMemory()">One More Thing 💭</button>
+<p id="memoryText" style="display:none; margin-top:15px;">
+I didn’t build this to impress you.
+I built it because even from far away,
+you still deserve to feel chosen,
+loved, and thought about every single day.
+</p>
+
   </div>
 </div>
 
@@ -112,6 +120,10 @@ button {
     <h2>Do you know how special you are to me?</h2>
     <button onclick="goToSlideshow()">Yes</button>
     <button onclick="goToSlideshow()">I think so</button>
+    <p>How much do you love me? 😌</p>
+<input type="range" min="0" max="100" value="50" oninput="updateLove(this.value)">
+<p id="loveValue">50%</p>
+
   </div>
 </div>
 
@@ -122,6 +134,7 @@ button {
     <h2>Our Moments 📸</h2>
     <img id="slide" src="618907674_851180494395006_436360453189498024_n.jpg" width="250">
     <br><br>
+    <p id="caption">One of my favorite memories with you ❤️</p>
     <button onclick="goToFinal()">Last Message ❤️</button>
   </div>
 </div>
@@ -138,6 +151,15 @@ button {
       I’ll just hold you. 💞
       <button onclick="goToGame()">Final Surprise 🎁</button>
     </p>
+
+    <p style="margin-top:20px;">
+And if I could choose again in every lifetime,
+in every universe,
+in every version of reality —
+I’d still choose you.
+Every. Single. Time.
+</p>
+
   </div>
 </div>
 
@@ -172,9 +194,26 @@ function startHack(){
   },40);
 }
 
-const text=`Even though there are miles between us,
-you are always the closest person to my heart.
-I made this little world just to see you smile ❤️`;
+const text=`Even though distance keeps us in different places,
+you are still the closest person to my heart.
+
+Every morning I wake up wishing I could see your sleepy face.
+Every night I fall asleep replaying our conversations in my head.
+You have become my comfort, my safe place, my favorite notification,
+and the part of my day I look forward to the most.
+
+So I made this little world —
+not because code is special,
+but because YOU are.
+
+Every click here, every animation, every line…
+is just a small way of showing that loving you
+is something I don’t just say —
+it’s something I put effort into.
+
+And no matter how many miles sit between us,
+my heart never learned how to stay away from you. ❤️`;
+
 
 let t=0;
 function typeWriter(){
@@ -197,6 +236,22 @@ setInterval(()=>{
   if(slide){
     s=(s+1)%images.length;
     slide.src=images[s];
+  }
+},2500);
+
+  const captions=[
+"One of my favorite memories with you ❤️",
+"The smile that made me fall harder 😭",
+"Proof that I got lucky fr 💖"
+];
+
+setInterval(()=>{
+  const slide=document.getElementById("slide");
+  const cap=document.getElementById("caption");
+  if(slide){
+    s=(s+1)%images.length;
+    slide.src=images[s];
+    cap.innerText=captions[s];
   }
 },2500);
 
@@ -289,6 +344,14 @@ function noClicked(){
   document.getElementById("yesBtn").style.transform = `scale(${scale})`;
 }
 
+  function showMemory(){
+  document.getElementById("memoryText").style.display="block";
+}
+
+  function updateLove(val){
+  document.getElementById("loveValue").innerText = val + "%";
+}
+
 
 
 
@@ -309,6 +372,7 @@ function noClicked(){
 
 </body>
 </html>
+
 
 
 
