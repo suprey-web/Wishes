@@ -149,6 +149,7 @@ loved, and thought about every single day.
       and the most beautiful part of my life.  
       One day I won’t need code to reach you —  
       I’ll just hold you. 💞
+      <button onclick="goToQuiz()">One Last Thing 🎯</button>
       <button onclick="goToGame()">Final Surprise 🎁</button>
     </p>
 
@@ -160,6 +161,28 @@ I’d still choose you.
 Every. Single. Time.
 </p>
 
+  </div>
+</div>
+
+<!-- SCREEN 7 QUIZ -->
+<div id="screenQuiz" class="screen">
+  <div class="card">
+    <h2>Quick Quiz 💕</h2>
+    <p>Let’s see how well you know us 😌</p>
+
+    <p>Where did we first start talking seriously?</p>
+    <button onclick="answer(1,true)">Late night chat 🌙</button>
+    <button onclick="answer(1,false)">Morning convo ☀️</button>
+
+    <p>Who says “I love you” more?</p>
+    <button onclick="answer(2,true)">You 😌</button>
+    <button onclick="answer(2,false)">Me 🙈</button>
+
+    <p>What’s my favorite thing about you?</p>
+    <button onclick="answer(3,true)">Your smile 😊</button>
+    <button onclick="answer(3,false)">Your height 😂</button>
+
+    <button onclick="finishQuiz()">See Result 💖</button>
   </div>
 </div>
 
@@ -352,6 +375,25 @@ function noClicked(){
   document.getElementById("loveValue").innerText = val + "%";
 }
 
+  let score = 0;
+
+function goToQuiz(){
+  showScreen("screenQuiz");
+}
+
+function answer(q, correct){
+  if(correct) score++;
+}
+
+function finishQuiz(){
+  showScreen("screen7"); // goes to Valentine game
+
+  if(score === 3){
+    document.querySelector("#screen7 .card h2").innerText =
+      "Perfect Score 😭💖 You know us too well";
+  }
+}
+
 
 
 
@@ -372,6 +414,7 @@ function noClicked(){
 
 </body>
 </html>
+
 
 
 
