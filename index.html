@@ -5,6 +5,8 @@
 <title>For Juli ❤️</title>
 
 <style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 body {
   margin:0;
   font-family:Segoe UI;
@@ -73,6 +75,40 @@ button {
   to { transform: translateY(0); opacity: 1; }
 }
  
+
+  .quiz-card button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background: linear-gradient(45deg,#ff9a9e,#fad0c4);
+}
+
+.correct {
+  animation: pop 0.4s ease;
+}
+
+.wrong {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  50%{transform:translateX(5px)}
+  75%{transform:translateX(-5px)}
+  100%{transform:translateX(0)}
+}
+
+@keyframes pop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
 
 
 
@@ -166,25 +202,13 @@ Every. Single. Time.
 
 <!-- SCREEN 7 QUIZ -->
 <div id="screenQuiz" class="screen">
-  <div class="card">
-    <h2>Quick Quiz 💕</h2>
-    <p>Let’s see how well you know us 😌</p>
-
-    <p>Where did we first start talking seriously?</p>
-    <button onclick="answer(1,true)">Late night chat 🌙</button>
-    <button onclick="answer(1,false)">Morning convo ☀️</button>
-
-    <p>Who says “I love you” more?</p>
-    <button onclick="answer(2,true)">You 😌</button>
-    <button onclick="answer(2,false)">Me 🙈</button>
-
-    <p>What’s my favorite thing about you?</p>
-    <button onclick="answer(3,true)">Your smile 😊</button>
-    <button onclick="answer(3,false)">Your height 😂</button>
-
-    <button onclick="finishQuiz()">See Result 💖</button>
+  <div class="card quiz-card">
+    <h2 id="question">Loading...</h2>
+    <div id="answers"></div>
+    <p id="feedback"></p>
   </div>
 </div>
+
 
 
 <script>
@@ -394,6 +418,71 @@ function finishQuiz(){
   }
 }
 
+const quiz = [
+  {
+    q: "Where did we first talk seriously?",
+    a: [
+      {text:"Late night chat 🌙", correct:true},
+      {text:"Morning convo ☀️", correct:false}
+    ]
+  },
+  {
+    q: "Who says 'I love you' more?",
+    a: [
+      {text:"You 😌", correct:true},
+      {text:"Me 🙈", correct:false}
+    ]
+  },
+  {
+    q: "My favorite thing about you?",
+    a: [
+      {text:"Your smile 😊", correct:true},
+      {text:"Your height 😂", correct:false}
+    ]
+  }
+];
+
+let currentQ = 0;
+
+function goToQuiz(){
+  showScreen("screenQuiz");
+  loadQuestion();
+}
+
+function loadQuestion(){
+  const q = quiz[currentQ];
+  document.getElementById("question").innerText = q.q;
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+  document.getElementById("feedback").innerText = "";
+
+  q.a.forEach(option=>{
+    const btn = document.createElement("button");
+    btn.innerText = option.text;
+    btn.onclick = ()=>selectAnswer(btn, option.correct);
+    answersDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(button, correct){
+  if(correct){
+    button.classList.add("correct");
+    document.getElementById("feedback").innerText = "Yayyy correct 💖";
+    confetti({particleCount:120, spread:70, origin:{y:0.6}});
+  } else {
+    button.classList.add("wrong");
+    document.getElementById("feedback").innerText = "Aww wrong 😢 try next";
+  }
+
+  setTimeout(()=>{
+    currentQ++;
+    if(currentQ < quiz.length){
+      loadQuestion();
+    } else {
+      showScreen("screen7"); // go to Valentine game
+    }
+  }, 1200);
+}
 
 
 
@@ -414,6 +503,7 @@ function finishQuiz(){
 
 </body>
 </html>
+
 
 
 
