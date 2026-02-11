@@ -250,6 +250,25 @@ Every. Single. Time.
 
 
 
+  <h3>How much do you miss me today?</h3>
+<input type="range" min="0" max="100" oninput="missMeter(this.value)">
+<p id="missText"></p>
+
+
+  <button onclick="startCatch()">Catch My Heart ❤️</button>
+<div id="gameArea" style="position:relative;height:200px;"></div>
+
+
+  <div class="card">
+  <h2>Official Girlfriend Contract 📜</h2>
+  <p>✔ Unlimited cuddles</p>
+  <p>✔ Free emotional support</p>
+  <p>✔ Lifetime loyalty plan</p>
+  <p>✔ Daily “you’re beautiful” subscription</p>
+  <p style="font-size:12px;">Terms cannot be cancelled.</p>
+</div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -550,7 +569,50 @@ function nextQuestion(){
 
   function goToTimeline(){ showScreen("screenTime"); }
 
+document.addEventListener("click", (e)=>{
+  const spark = document.createElement("div");
+  spark.innerHTML = "💖";
+  spark.style.position = "fixed";
+  spark.style.left = e.clientX + "px";
+  spark.style.top = e.clientY + "px";
+  spark.style.pointerEvents = "none";
+  spark.style.fontSize = "18px";
+  spark.style.animation = "float 2s ease forwards";
+  document.body.appendChild(spark);
+  setTimeout(()=>spark.remove(),2000);
+});
 
+  if(pass==="iloveyou"){
+  showScreen("screen2");
+  setTimeout(()=>{
+    alert("The real password was always YOU ❤️");
+  },1200);
+}
+
+function missMeter(val){
+  const text = document.getElementById("missText");
+  if(val < 30) text.innerText = "Liar.";
+  else if(val < 70) text.innerText = "Okay fair 😌";
+  else text.innerText = "Aww come here 🥺💖";
+}
+
+
+  function startCatch(){
+  const area = document.getElementById("gameArea");
+  area.innerHTML = "";
+  const heart = document.createElement("div");
+  heart.innerHTML="❤️";
+  heart.style.position="absolute";
+  heart.style.fontSize="30px";
+  area.appendChild(heart);
+
+  function move(){
+    heart.style.left=Math.random()*80+"%";
+    heart.style.top=Math.random()*70+"%";
+  }
+  heart.onclick=()=>alert("You caught my heart forever 💍");
+  setInterval(move,800);
+}
 
 
 </script>
@@ -570,6 +632,7 @@ function nextQuestion(){
 
 </body>
 </html>
+
 
 
 
