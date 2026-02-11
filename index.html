@@ -13,7 +13,9 @@ body {
   animation: gradientMove 12s ease infinite;
   color:white;
   text-align:center;
-  overflow:hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+
 }
 
 .screen { display:none; height:100vh; padding:30px; }
@@ -257,6 +259,15 @@ Every. Single. Time.
 
   <button onclick="startCatch()">Catch My Heart ❤️</button>
 <div id="gameArea" style="position:relative;height:200px;"></div>
+  <div id="gameArea" style="
+  position:relative;
+  height:300px;
+  overflow:hidden;
+  border-radius:20px;
+  margin-top:20px;
+">
+</div>
+
 
 
   <div class="card">
@@ -632,6 +643,7 @@ function missMeter(val){
 
 </body>
 </html>
+
 
 
 
