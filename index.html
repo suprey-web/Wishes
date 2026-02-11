@@ -148,7 +148,7 @@ button {
   <div class="card">
     <h1>Hyyy Beautiful ❤️</h1>
     <p id="letter"></p>
-    <button onclick="goToQuestions()">Continue</button>
+    <button onclick="goToWhy()">Continue</button>
     <button onclick="showMemory()">One More Thing 💭</button>
 <p id="memoryText" style="display:none; margin-top:15px;">
 I didn’t build this to impress you.
@@ -212,6 +212,21 @@ Every. Single. Time.
 </div>
 
 <!-- SCREEN 7 QUIZ -->
+  <!-- SCREEN WHY HER -->
+<div id="screenWhy" class="screen">
+  <div class="card">
+    <h2>Why You? 🤍</h2>
+    <ul style="text-align:left; line-height:1.8;">
+      <li>You make my worst days feel lighter</li>
+      <li>Your voice is my favorite sound</li>
+      <li>You care in ways most people don't</li>
+      <li>You understand me without me explaining</li>
+      <li>You feel like home — even from far away</li>
+    </ul>
+    <button onclick="goToQuestions()">Continue</button>
+  </div>
+</div>
+
 <div id="screenQuiz" class="screen">
   <div class="card quiz-card">
     <h2 id="question">Loading...</h2>
@@ -220,6 +235,19 @@ Every. Single. Time.
     <button id="nextBtn" style="display:none;" onclick="nextQuestion()">Next ➜</button>
   </div>
 </div>
+
+  <!-- SCREEN TIMELINE -->
+<div id="screenTime" class="screen">
+  <div class="card">
+    <h2>Our Story So Far 📖</h2>
+    <p>💬 The day we started talking — best random moment of my life</p>
+    <p>😂 The first time we laughed non-stop</p>
+    <p>🌙 Late night talks that made us closer</p>
+    <p>❤️ The moment I realized I was falling</p>
+    <button onclick="goToSlideshow()">Memories ➜</button>
+  </div>
+</div>
+
 
 
 
@@ -518,6 +546,11 @@ function nextQuestion(){
   }
 }
 
+  function goToWhy(){ showScreen("screenWhy"); }
+
+  function goToTimeline(){ showScreen("screenTime"); }
+
+
 
 
 </script>
@@ -537,6 +570,7 @@ function nextQuestion(){
 
 </body>
 </html>
+
 
 
 
