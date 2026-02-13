@@ -7,7 +7,95 @@
 
 </head>
 
-  
+<style>
+body {
+  margin:0;
+  font-family:Segoe UI;
+  background: linear-gradient(-45deg, #ff4e8a, #ff8fb1, #ffb6c1, #ff5fa2);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color:white;
+  text-align:center;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+}
+
+.screen { display:none; height:100vh; padding:30px; }
+.active { display:block; }
+
+button {
+  padding:12px 20px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  background:white;
+  color:#ff4b6e;
+  font-weight:bold;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  color: white;
+  z-index: 9999;
+  pointer-events: none;
+  animation-name: float;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.4); opacity: 0; }
+}
+
+  @keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+ 
+
+  .quiz-card button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background: linear-gradient(45deg,#ff9a9e,#fad0c4);
+}
+
+.correct {
+  animation: pop 0.4s ease;
+}
+
 .wrong {
   animation: shake 0.4s ease;
 }
@@ -37,9 +125,6 @@
   cursor:pointer;
   background: linear-gradient(45deg,#a18cd1,#fbc2eb);
 }
-
-
-
 
 </style>
 
@@ -191,11 +276,8 @@ Every. Single. Time.
   <p style="font-size:12px;">Terms cannot be cancelled.</p>
 </div>
 
-
-
-
   
-<!-- SCREEN 8 VALENTINE GAME -->
+  <!-- SCREEN 8 VALENTINE GAME -->
 <div id="screen8" class="screen">
   <div class="card">
     <h2>One last question… ❤️</h2>
@@ -210,6 +292,7 @@ Every. Single. Time.
 
 </body>
 </html>
+
 
 
 
