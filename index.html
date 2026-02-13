@@ -7,6 +7,42 @@
 
 </head>
 
+  
+.wrong {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  50%{transform:translateX(5px)}
+  75%{transform:translateX(-5px)}
+  100%{transform:translateX(0)}
+}
+
+@keyframes pop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
+
+
+  #nextBtn{
+  margin-top:15px;
+  padding:12px;
+  width:100%;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background: linear-gradient(45deg,#a18cd1,#fbc2eb);
+}
+
+
+
+
+</style>
+
 <body>
 
 <!-- SCREEN 1 PASSWORD -->
@@ -174,6 +210,7 @@ Every. Single. Time.
 
 </body>
 </html>
+
 
 
 
