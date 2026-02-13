@@ -238,44 +238,7 @@ Every. Single. Time.
   </div>
 </div>
 
-  <!-- SCREEN TIMELINE -->
-<div id="screen7" class="screen">
-  <div class="card">
-    <h2>Our Story So Far 📖</h2>
-    <p>💬 The day we started talking — best random moment of my life</p>
-    <p>😂 The first time we laughed non-stop</p>
-    <p>🌙 Late night talks that made us closer</p>
-    <p>❤️ The moment I realized I was falling</p>
-    <button onclick="goToSlideshow()">Memories ➜</button>
-  </div>
-</div>
-
-
-<div>
-  <h3>How much do you miss me today?</h3>
-<input type="range" min="0" max="100" oninput="missMeter(this.value)">
-<p id="missText"></p>
-
-
-  <button onclick="startCatch()">Catch My Heart ❤️</button>
-<div id="gameArea" style="position:relative;height:300px;overflow:hidden;border-radius:20px;margin-top:20px;"></div>
-  overflow:hidden;
-  border-radius:20px;
-  margin-top:20px;
-">
-</div>
-
-
-
-  <div class="card">
-  <h2>Official Girlfriend Contract 📜</h2>
-  <p>✔ Unlimited cuddles</p>
-  <p>✔ Free emotional support</p>
-  <p>✔ Lifetime loyalty plan</p>
-  <p>✔ Daily “you’re beautiful” subscription</p>
-  <p style="font-size:12px;">Terms cannot be cancelled.</p>
-</div>
-
+ 
   
   <!-- SCREEN 7 VALENTINE GAME -->
 <div id="screen7" class="screen">
@@ -291,7 +254,7 @@ Every. Single. Time.
 </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 
 <script>
 function showScreen(id){
@@ -507,84 +470,6 @@ function finishQuiz(){
   }
 }
 
-const quiz = [
-  {
-    q: "Where did we first talk seriously?",
-    a: [
-      {text:"Late night chat 🌙", correct:true},
-      {text:"Morning convo ☀️", correct:false}
-    ]
-  },
-  {
-    q: "Who says 'I love you' more?",
-    a: [
-      {text:"You 😌", correct:true},
-      {text:"Me 🙈", correct:false}
-    ]
-  },
-  {
-    q: "My favorite thing about you?",
-    a: [
-      {text:"Your smile 😊", correct:true},
-      {text:"Your height 😂", correct:false}
-    ]
-  }
-];
-
-let currentQ = 0;
-let answered = false;
-
-function goToQuiz(){
-  showScreen("screenQuiz");
-  loadQuestion();
-}
-
-function loadQuestion(){
-  answered = false;
-  document.getElementById("nextBtn").style.display = "none";
-  document.getElementById("feedback").innerText = "";
-
-  const q = quiz[currentQ];
-  document.getElementById("question").innerText = q.q;
-
-  const answersDiv = document.getElementById("answers");
-  answersDiv.innerHTML = "";
-
-  q.a.forEach(option=>{
-    const btn = document.createElement("button");
-    btn.innerText = option.text;
-    btn.onclick = ()=>selectAnswer(btn, option.correct);
-    answersDiv.appendChild(btn);
-  });
-}
-
-function selectAnswer(button, correct){
-  if(answered) return;
-  answered = true;
-
-  const buttons = document.querySelectorAll("#answers button");
-  buttons.forEach(b => b.disabled = true);
-
-  if(correct){
-    button.classList.add("correct");
-    document.getElementById("feedback").innerText = "Yayyy correct 💖";
-    confetti({particleCount:120, spread:70, origin:{y:0.6}});
-  } else {
-    button.classList.add("wrong");
-    document.getElementById("feedback").innerText = "Aww wrong 😢";
-  }
-
-  document.getElementById("nextBtn").style.display = "block";
-}
-
-function nextQuestion(){
-  currentQ++;
-  if(currentQ < quiz.length){
-    loadQuestion();
-  } else {
-    showScreen("screen7"); // Valentine game screen
-  }
-}
 
   function goToWhy(){ showScreen("screenWhy"); }
 
@@ -634,6 +519,7 @@ function missMeter(val){
 </script>
 </body>
 </html>
+
 
 
 
