@@ -36,9 +36,13 @@ button {
   position: fixed;
   bottom: -20px;
   color: white;
-  z-index: 0; /* LOWER */
+  z-index: 9999;
   pointer-events: none;
+  animation-name: float;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
+
 
 
 @keyframes float {
@@ -54,8 +58,17 @@ button {
 
 
 .card {
-  position: relative;
-  z-index: 2; /* HIGHER */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  animation: fadeUp 1s ease forwards;
 }
 
 @keyframes fadeUp {
@@ -623,6 +636,7 @@ function missMeter(val){
 
 </body>
 </html>
+
 
 
 
